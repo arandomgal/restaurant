@@ -22,10 +22,10 @@ function ImageSection() {
   )
 }
 
-function Header(p) {
+function Header({name}) {
   return (
       <header>
-          <h1>Welcome to {p.name}'s Kitchen</h1>
+          <h1>Welcome to {name}'s Kitchen</h1>
       </header>
   );
 }
