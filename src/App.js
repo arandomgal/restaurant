@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const englishMenu = [
   {
@@ -53,8 +52,8 @@ function Header(p) {
     );
 }
 
-function Main(x) {
-  if (x.menu == "englishMenu")
+function Main(p) {
+  if (p.menu == "englishMenu")
     return (
       <section>
           <ul>
@@ -62,7 +61,7 @@ function Main(x) {
           </ul>
       </section>
     );
-  else if (x.menu == "japaneseMenu")
+  else if (p.menu == "japaneseMenu")
     return (
       <section>
           <ul>
@@ -90,6 +89,11 @@ function Footer(p) {
 
 function App() {
   const [menuName, setLanguage] = useState("englishMenu");
+
+  useEffect(() => {
+    console.log(`${menuName} is being viewed`)
+  });
+
   return (
     <div className="App">
            <Header name="Michelle" menuName={menuName}/>
