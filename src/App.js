@@ -37,14 +37,14 @@ function ImageSection() {
   )
 }
 
-function Header(p) {
-  if (p.menuName === "englishMenu")
+function Header({name, menuName}) {
+  if (menuName === "englishMenu")
     return (
         <header>
-            <h1>Welcome to {p.name}'s Kitchen</h1>
+            <h1>Welcome to {name}'s Kitchen</h1>
         </header>
     );
-  else if (p.menuName === "japaneseMenu")
+  else if (menuName === "japaneseMenu")
     return (
       <header>
           <h1>いらっしゃいませ</h1>
@@ -102,11 +102,15 @@ function Footer(p) {
   );
 }
 
-
-
 function App() {
   const [menuName, setLanguage] = useState("englishMenu");
 
+  const [pageData, setPageData] = useState(null);
+  useEffect(
+    () => {
+      fetch(`https://api.github.com/users/arandomgal`).then((response) => response.json()).then(data => setPageData(data));
+    }, []
+  );
 
   useEffect(() => {
     console.log(`${menuName} is being viewed`)
@@ -114,7 +118,7 @@ function App() {
 
   return (
     <div className="App">
-           <Header name="Michelle" menuName={menuName}/>
+           <Header name={pageData.name} menuName={menuName}/>
            <ImageSection />
            <Main menu={menuName}/>
            <button onClick={() => setLanguage("englishMenu")}>English Menu</button>
