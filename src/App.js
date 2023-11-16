@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 
 const englishMenu = [
   {
@@ -38,13 +38,13 @@ function ImageSection() {
 }
 
 function Header(p) {
-  if (p.menuName == "englishMenu")
+  if (p.menuName === "englishMenu")
     return (
         <header>
             <h1>Welcome to {p.name}'s Kitchen</h1>
         </header>
     );
-  else if (p.menuName == "japaneseMenu")
+  else if (p.menuName === "japaneseMenu")
     return (
       <header>
           <h1>いらっしゃいませ</h1>
@@ -53,7 +53,7 @@ function Header(p) {
 }
 
 function Main(p) {
-  if (p.menu == "englishMenu")
+  if (p.menu === "englishMenu")
     return (
       <section>
           <ul>
@@ -61,7 +61,7 @@ function Main(p) {
           </ul>
       </section>
     );
-  else if (p.menu == "japaneseMenu")
+  else if (p.menu === "japaneseMenu")
     return (
       <section>
           <ul>
@@ -79,6 +79,21 @@ function Main(p) {
     );
 }
 
+function Disclaimer() {
+  const [showDisclaimer, setShowDisclaimer] = useReducer((showDisclaimer) => !showDisclaimer, false);
+  return (
+    <div className="App">
+      <input type="checkbox" value={showDisclaimer} onChange={() => setShowDisclaimer((showDisclaimer => !showDisclaimer))} />
+      <label>
+        {showDisclaimer ? "Hide Disclaimer" : "Show Disclaimer"}    
+      </label>
+      <p>
+        {showDisclaimer? "Our restaurant does not assume liability for adverse reactions to foods consumed, or items one may come into contact with while eating at any University establishment." : ""}
+      </p>
+    </div>
+  );
+}
+
 function Footer(p) {
   return (
       <footer>
@@ -87,8 +102,11 @@ function Footer(p) {
   );
 }
 
+
+
 function App() {
   const [menuName, setLanguage] = useState("englishMenu");
+
 
   useEffect(() => {
     console.log(`${menuName} is being viewed`)
@@ -101,6 +119,7 @@ function App() {
            <Main menu={menuName}/>
            <button onClick={() => setLanguage("englishMenu")}>English Menu</button>
            <button onClick={() => setLanguage("japaneseMenu")}>Japanese Menu</button>
+           <Disclaimer />
            <Footer
                year={new Date().getFullYear()}
            />
