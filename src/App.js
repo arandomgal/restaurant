@@ -106,15 +106,29 @@ function App() {
   const [menuName, setLanguage] = useState("englishMenu");
 
   const [pageData, setPageData] = useState(null);
+  const [pageError, setPageError] = useState(null);
+  const [pageLoading, setPageLoading] = useState(null);
   useEffect(
     () => {
-      fetch(`https://api.github.com/users/arandomgal`).then((response) => response.json()).then(data => setPageData(data));
+      setPageLoading(true);
+      fetch(`https://api.github.com/users/arandomgalx`)
+      .then((response) => response.json())
+      .then(data => setPageData(data))
+      .then(() => setPageLoading(false))
+      .catch(fetchError => setPageError(fetchError));
     }, []
   );
 
   useEffect(() => {
     console.log(`${menuName} is being viewed`)
   });
+
+  if (pageLoading) return <h1>Loading...</h1>;
+  if (pageError) return <pre>{JSON.stringify(pageError)}</pre>
+  if (pageData.message === "Not Found") pageData.name = "UNKNOWN";
+  if (!pageData) return null;
+
+
 
   return (
     <div className="App">
