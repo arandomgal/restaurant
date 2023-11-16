@@ -83,12 +83,12 @@ function Disclaimer() {
   const [showDisclaimer, setShowDisclaimer] = useReducer((showDisclaimer) => !showDisclaimer, false);
   return (
     <div className="App">
-      <input type="checkbox" value={showDisclaimer} onChange={() => setShowDisclaimer((showDisclaimer => !showDisclaimer))} />
+      <input type="checkbox" value={showDisclaimer} onChange={setShowDisclaimer}/>
       <label>
         {showDisclaimer ? "Hide Disclaimer" : "Show Disclaimer"}    
       </label>
       <p>
-        {showDisclaimer? "Our restaurant does not assume liability for adverse reactions to foods consumed, or items one may come into contact with while eating at any University establishment." : ""}
+        {showDisclaimer? "* DISCLAIMER: Our restaurant does not assume liability for adverse reactions to foods consumed, or items one may come into contact with while eating at any University establishment." : ""}
       </p>
     </div>
   );
