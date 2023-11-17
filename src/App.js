@@ -1,5 +1,6 @@
 import './App.css';
 import { useState, useReducer, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const englishMenu = [
   {
@@ -96,9 +97,12 @@ function Disclaimer() {
 
 function Footer(p) {
   return (
+    <div>
       <footer>
           <p>Copyright {p.year}</p>
+          <p><Link to="/contact">Contact</Link> | <Link to="/about">About</Link></p>
       </footer>
+    </div>
   );
 }
 
@@ -111,7 +115,7 @@ function App() {
   useEffect(
     () => {
       setPageLoading(true);
-      fetch(`https://api.github.com/users/arandomgalx`)
+      fetch(`https://api.github.com/users/arandomgal`)
       .then((response) => response.json())
       .then(data => setPageData(data))
       .then(() => setPageLoading(false))
@@ -125,7 +129,6 @@ function App() {
 
   if (pageLoading) return <h1>Loading...</h1>;
   if (pageError) return <pre>{JSON.stringify(pageError)}</pre>
-  if (pageData.message === "Not Found") pageData.name = "UNKNOWN";
   if (!pageData) return null;
 
 
