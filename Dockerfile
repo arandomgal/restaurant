@@ -1,2 +1,2 @@
-FROM nginx:stable-alpine
+FROM nginx:stable-alpine-slim
 COPY build/ /usr/share/nginx/html
