@@ -1,0 +1,5 @@
+apiVersion: v2
+name: restaurant
+version: 0.1.0
+deprecated: false
+appVersion: 0.1.0
