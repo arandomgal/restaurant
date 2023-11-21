@@ -6,5 +6,5 @@ targetPort: 3000
 sourcePort: 3000
 nodePort: 32767
 appVersion: 0.2.4
-githubUrl: https://api.github.com/users/magladde 
+githubUrl: https://api.github.com/users/WakeTechCC
 
