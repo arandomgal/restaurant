@@ -1,6 +1,6 @@
 appName: restaurant
 imageName: ymandrews/restaurant:0.1.0
-replicas: 1
+replicas: 2
 serviceName: restaurant-svc
 targetPort: 80
 sourcePort: 80
