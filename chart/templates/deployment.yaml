@@ -17,5 +17,8 @@ spec:
       containers:
         - image: {{.Values.imageName}}
           name: {{.Values.appName}}
+          env:
+            - name: REACT_APP_GITHUB_URL
+              value: "{{.Values.githubUrl}}"
           ports:
             - containerPort: {{.Values.targetPort}}
