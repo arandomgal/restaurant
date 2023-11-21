@@ -108,7 +108,9 @@ function Footer(p) {
 
 function App() {
   let apiUrl = process.env.REACT_APP_GITHUB_URL;
+  console.log('before if statement, apiUrl=', apiUrl);
   if (!apiUrl) apiUrl= "https://api.github.com/users/magladde";
+  console.log('after if statement, apiUrl=', apiUrl);
   const [menuName, setLanguage] = useState("englishMenu");
 
   const [pageData, setPageData] = useState(null);

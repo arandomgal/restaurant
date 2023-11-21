@@ -19,6 +19,6 @@ spec:
           name: {{.Values.appName}}
           env:
             - name: REACT_APP_GITHUB_URL
-              value: "{{.Values.githubUrl}}"
+              value: {{.Values.githubUrl}}
           ports:
             - containerPort: {{.Values.targetPort}}
