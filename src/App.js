@@ -107,6 +107,8 @@ function Footer(p) {
 }
 
 function App() {
+  let apiUrl = process.env.REACT_APP_GITHUB_URL;
+  if (!apiUrl) apiUrl= "https://api.github.com/users/magladde";
   const [menuName, setLanguage] = useState("englishMenu");
 
   const [pageData, setPageData] = useState(null);
@@ -115,12 +117,12 @@ function App() {
   useEffect(
     () => {
       setPageLoading(true);
-      fetch(`https://api.github.com/users/arandomgal`)
+      fetch(apiUrl)
       .then((response) => response.json())
       .then(data => setPageData(data))
       .then(() => setPageLoading(false))
       .catch(fetchError => setPageError(fetchError));
-    }, []
+    }, [apiUrl]
   );
 
   useEffect(() => {
