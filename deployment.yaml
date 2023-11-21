@@ -15,7 +15,7 @@ spec:
         app: restaurant
     spec:
       containers:
-        - image: ymandrews/restaurant:0.1.0
+        - image: ymandrews/restaurant:0.1.2
           name: restaurant
           env:
             - name: REACT_APP_GITHUB_URL
