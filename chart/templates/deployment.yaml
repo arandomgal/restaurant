@@ -17,8 +17,9 @@ spec:
       containers:
         - image: {{.Values.imageName}}
           name: {{.Values.appName}}
+          command: ["/bin/sh", "-c", "export REACT_APP_GITHUB_URL='$(GITHUB_URL)';echo $REACT_APP_GITHUB_URL;npm start"]
           env:
-            - name: REACT_APP_GITHUB_URL
-              value: {{.Values.githubUrl}}
+            - name: GITHUB_URL
+              value: "{{.Values.githubUrl}}"
           ports:
             - containerPort: {{.Values.targetPort}}

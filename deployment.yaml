@@ -15,10 +15,7 @@ spec:
         app: restaurant
     spec:
       containers:
-        - image: ymandrews/restaurant:0.1.2
+        - image: ymandrews/restaurant:0.2.4
           name: restaurant
-          env:
-            - name: REACT_APP_GITHUB_URL
-              value: "https://api.github.com/users/magladde"
           ports:
-            - containerPort: 80
+            - containerPort: 3000

@@ -1,10 +1,10 @@
 appName: restaurant
-imageName: ymandrews/restaurant:0.1.4
+imageName: ymandrews/restaurant:0.2.4
 replicas: 1
 serviceName: restaurant-svc
-targetPort: 80
-sourcePort: 80
-nodePort: 31001
-appVersion: 0.1.4
+targetPort: 3000
+sourcePort: 3000
+nodePort: 32767
+appVersion: 0.2.4
 githubUrl: https://api.github.com/users/magladde 
 

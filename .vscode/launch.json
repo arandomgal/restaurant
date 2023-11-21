@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Debug restaurant app in Chrome",
-            "url": "http://localhost:31001",
+            "url": "http://localhost:32767",
             "webRoot": "${workspaceFolder}"
         }
     ]
