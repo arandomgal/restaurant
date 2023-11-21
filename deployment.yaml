@@ -19,6 +19,6 @@ spec:
           name: restaurant
           env:
             - name: REACT_APP_GITHUB_URL
-              value: "https://api.github.com/users/arandomgal"
+              value: "https://api.github.com/users/magladde"
           ports:
             - containerPort: 80
